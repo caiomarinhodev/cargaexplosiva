@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hello World from HTML by Koding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="//koding.com/hello/css/style.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+    <link rel="stylesheet" href="leaflet-routing-machine.css"/>
+    <link rel="stylesheet" href="Control.Geocoder.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="leaflet-routing-machine.js"></script>
+    <script src="Control.Geocoder.js"></script>
+
+    <!--[if IE]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body, #map {
+            height: 100%;
+        }
+    </style>
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+</head>
+<body class="html">
+<div id="map"></div>
+
+<script>
+
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
+
+//    var map = L.map('map');
+//    var list = [];
+//    var interval;
+//    var ind = 0;
+//
+//    var itinerario_test = [{"lat":-7.240615,"lng":-35.931438},{"lat":-7.240836,"lng":-35.931953},{"lat":-7.240919,"lng":-35.931969},{"lat":-7.240968,"lng":-35.93196},{"lat":-7.241026,"lng":-35.931916},{"lat":-7.241056,"lng":-35.931863},{"lat":-7.24095,"lng":-35.931624},{"lat":-7.240512,"lng":-35.930657},{"lat":-7.240317,"lng":-35.930178},{"lat":-7.240139,"lng":-35.929838},{"lat":-7.240046,"lng":-35.929663},{"lat":-7.240011,"lng":-35.929597},{"lat":-7.239773,"lng":-35.929064},{"lat":-7.237735,"lng":-35.924307},{"lat":-7.237702,"lng":-35.923962},{"lat":-7.237683,"lng":-35.923831},{"lat":-7.237589,"lng":-35.923739},{"lat":-7.237394,"lng":-35.923514},{"lat":-7.237143,"lng":-35.922965},{"lat":-7.23612,"lng":-35.920733},{"lat":-7.236081,"lng":-35.920452},{"lat":-7.236128,"lng":-35.920316},{"lat":-7.236105,"lng":-35.920175},{"lat":-7.236018,"lng":-35.920061},{"lat":-7.235887,"lng":-35.920003},{"lat":-7.235641,"lng":-35.919659},{"lat":-7.235282,"lng":-35.918822},{"lat":-7.235228,"lng":-35.918696},{"lat":-7.233356,"lng":-35.914332},{"lat":-7.231633,"lng":-35.910411},{"lat":-7.2317,"lng":-35.910336},{"lat":-7.23174,"lng":-35.910243},{"lat":-7.231747,"lng":-35.910143},{"lat":-7.231721,"lng":-35.910045},{"lat":-7.231635,"lng":-35.909933},{"lat":-7.231518,"lng":-35.909874},{"lat":-7.231387,"lng":-35.909871},{"lat":-7.229501,"lng":-35.905498},{"lat":-7.229305,"lng":-35.905056},{"lat":-7.228608,"lng":-35.903478},{"lat":-7.228436,"lng":-35.903089},{"lat":-7.228109,"lng":-35.90235},{"lat":-7.227833,"lng":-35.901725},{"lat":-7.227653,"lng":-35.901318},{"lat":-7.227466,"lng":-35.900898},{"lat":-7.227252,"lng":-35.90041},{"lat":-7.2271,"lng":-35.900065},{"lat":-7.226868,"lng":-35.89957},{"lat":-7.226757,"lng":-35.899332},{"lat":-7.22646,"lng":-35.898697},{"lat":-7.226094,"lng":-35.897913},{"lat":-7.225671,"lng":-35.897008},{"lat":-7.225502,"lng":-35.896648},{"lat":-7.224872,"lng":-35.895301},{"lat":-7.224496,"lng":-35.894475},{"lat":-7.224296,"lng":-35.894035},{"lat":-7.224244,"lng":-35.893922},{"lat":-7.223959,"lng":-35.893297},{"lat":-7.223671,"lng":-35.892723},{"lat":-7.224246,"lng":-35.892648},{"lat":-7.224508,"lng":-35.89237},{"lat":-7.22457,"lng":-35.892306},{"lat":-7.224873,"lng":-35.891986},{"lat":-7.224823,"lng":-35.891684},{"lat":-7.224271,"lng":-35.891345},{"lat":-7.224201,"lng":-35.891239},{"lat":-7.224814,"lng":-35.889373},{"lat":-7.225326,"lng":-35.887733},{"lat":-7.22564,"lng":-35.8868},{"lat":-7.226003,"lng":-35.885726},{"lat":-7.226072,"lng":-35.88551},{"lat":-7.226302,"lng":-35.884818},{"lat":-7.226709,"lng":-35.884929},{"lat":-7.227139,"lng":-35.8849},{"lat":-7.227733,"lng":-35.884967},{"lat":-7.228576,"lng":-35.884788},{"lat":-7.228895,"lng":-35.884702},{"lat":-7.229211,"lng":-35.884637},{"lat":-7.229328,"lng":-35.884483},{"lat":-7.229364,"lng":-35.884233},{"lat":-7.229371,"lng":-35.883942},{"lat":-7.229394,"lng":-35.883786},{"lat":-7.229706,"lng":-35.882491},{"lat":-7.229817,"lng":-35.882026},{"lat":-7.229936,"lng":-35.881768},{"lat":-7.230183,"lng":-35.881479},{"lat":-7.230272,"lng":-35.881443},{"lat":-7.23078,"lng":-35.882118},{"lat":-7.230816,"lng":-35.882166},{"lat":-7.230975,"lng":-35.88249}];
+//
+//    L.tileLayer('http://{s}.tiles.mapbox.com/v4/thinhnvv.cieef6v3v025rs9lx3852m36x/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGhpbmhudnYiLCJhIjoiZjQzYWM1ZDQ4YjNkNjc5YzQwZjA5OWIwNTNhZDNhODMifQ.53wH0q9UO48XrvK_TUESmg',
+//            {maxZoom: 18}).addTo(map);
+//
+//    var control = L.Routing.control({
+//        waypoints: [
+//            L.latLng(-7.222718,-35.905829),
+//            L.latLng(-5.812169,-35.206533)
+//        ],
+//        draggableWaypoints: false,
+//        addWaypoints: false,
+//        show: false,
+//        pointMarkerStyle: {radius: 15, color: '#dddddd', fillColor: 'blue', opacity: 1, fillOpacity: 0.7},
+//        collapsible: true,
+//        routeWhileDragging: true,
+//        geocoder: L.Control.Geocoder.nominatim(),
+//        waypointNameFallback: function (latLng) {
+//            function zeroPad(n) {
+//                n = Math.round(n);
+//                return n < 10 ? '0' + n : n;
+//            }
+//
+//            function sexagesimal(p, pos, neg) {
+//                var n = Math.abs(p),
+//                        degs = Math.floor(n),
+//                        mins = (n - degs) * 60,
+//                        secs = (mins - Math.floor(mins)) * 60,
+//                        frac = Math.round((secs - Math.floor(secs)) * 100);
+//                return (n >= 0 ? pos : neg) + degs + '°' +
+//                        zeroPad(mins) + '\'' +
+//                        zeroPad(secs) + '.' + zeroPad(frac) + '"';
+//            }
+//
+//            return sexagesimal(latLng.lat, 'N', 'S') + ' ' + sexagesimal(latLng.lng, 'E', 'W');
+//        }
+//    }).addTo(map);
+//
+//    function set_waypoints_iniciais(e1,e2){
+//        control.setWaypoints([
+//            L.latLng(e1.lat, e1.lng),
+//            L.latLng(e2.lat, e2.lng)
+//        ]);
+//    }
+//
+//    function draw(point_object) {
+//        control.spliceWaypoints(0, 1, point_object);
+//        ind++;
+//        //log('indice', ind, 'draw()');
+//    }
+//
+//    function log(key, value, method){
+//        if(key!='' && method!=''){
+//            console.log(key+": "+value+": "+method);
+//        }else{
+//            console.log('--- LOGGER: '+ value+": "+method);
+//        }
+//    }
+//
+//
+//    function get_time_rota_milli(list, tempo){
+//        //TODO: Implementar usando moment.js
+//    }
+//
+//
+//
+//
+//
+//
+////    L.DomEvent.on(reverseButton, 'click', function() {
+////        var waypoints = this.getWaypoints();
+////        this.setWaypoints(waypoints.reverse());
+////    }, this);
+//
+////    control.on('routesfound', function (e) {
+////        var routes = e.routes;
+////        routes[0].coordinates.forEach(function(obj){
+////            list.push(obj);
+////        });
+////        console.log(JSON.stringify(list));
+////    });
+//
+////-------------------- TEST CODE ------------------------------------------------------------------------
+//
+//    set_waypoints_iniciais(itinerario_test[0], itinerario_test[itinerario_test.length-1]);
+////    interval = setInterval(function (){
+////        if(itinerario_test[ind].lat!= itinerario_test[itinerario_test.length-1].lat &&
+////                itinerario_test[ind].lng!= itinerario_test[itinerario_test.length-1].lng){
+////            draw(itinerario_test[ind]);
+////        }else{
+////            draw(itinerario_test[ind]);
+////            alert("ROTA TERMINADA!");
+////            clearInterval(interval);
+////        }
+////
+////                }, 1000);
+//
+////------------------------------------- END TEST CODE --------------------------------------------------
+//
+//    //var map = L.map('map').setView([-7.2519943, -35.9206443], 13);
+////    $(document).ready(function () {
+////
+////
+////    });
+
+</script>
+
+</body>
+</html>
