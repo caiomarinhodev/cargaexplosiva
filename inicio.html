@@ -1,0 +1,122 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Undefined</title>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>-->
+    <!--<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+    <!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />-->
+    <!--<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
+    <!--<link rel="stylesheet" href="css/leaflet-routing-machine.css" >-->
+    <!--<link rel="stylesheet" href="css/Control.Geocoder.css" />-->
+    <!--<link rel="stylesheet" href="css/custom-game.css" />-->
+    <!--<script src="js/Control.Geocoder.js"></script>-->
+    <!--<script type="text/javascript" src="js/movingMarker.js"></script>-->
+    <!--<script src="js/leaflet-routing-machine.min.js"></script>-->
+    <!--<script src="bower_components/moment/moment.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div data-role="page" id="inicio">-->
+
+    <!--<div data-role="header">-->
+        <!--<h1>Undefined</h1>-->
+    <!--</div>&lt;!&ndash; /header &ndash;&gt;-->
+
+    <!--<div role="main" class="ui-content">-->
+        <!--<div id="map"></div>-->
+        <!--<pre id='distance' class='ui-distance'></pre>-->
+    <!--</div>-->
+    <!--<script src="js/script.js"></script>-->
+<!--</div>&lt;!&ndash; /page &ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNDEFINED</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Undefined</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <link rel="stylesheet" href="css/leaflet-routing-machine.css" >
+    <link rel="stylesheet" href="css/Control.Geocoder.css" />
+    <link rel="stylesheet" href="css/custom-game.css" />
+    <script src="js/Control.Geocoder.js"></script>
+    <script type="text/javascript" src="js/movingMarker.js"></script>
+    <script src="js/leaflet-routing-machine.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
+    <style type="text/css">
+        #map { min-height: 320px; height: 100%; margin: -15px;}
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, {
+            height: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div data-role="page">
+
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-fullscreen="false">
+        <h1>My Title</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+
+        <div id="map"></div>
+
+        <script>
+            var map = L.map('map');
+            L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+            }).addTo(map);
+            function onLocationFound(e) {
+                var radius = e.accuracy / 2;
+                L.marker(e.latlng).addTo(map)
+                        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+                L.circle(e.latlng, radius).addTo(map);
+            }
+            function onLocationError(e) {
+                alert(e.message);
+            }
+            map.on('locationfound', onLocationFound);
+            map.on('locationerror', onLocationError);
+            map.locate({setView: true, maxZoom: 16});
+        </script>
+
+
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="false">
+        <div data-role="navbar" data-position="fixed" data-tap-toggle="false" >
+            <ul>
+                <li><a href="#" id="PROFILE" data-icon="custom">PROFILE</a></li>
+                <li><a href="#" id="CONTACTS" data-icon="custom">CONTACTS</a></li>
+                <li><a href="#" id="TRIPS" data-icon="custom">TRIPS</a></li>
+                <li><a href="#" id="ACCOUNT" data-icon="custom">ACCOUNT</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
